@@ -4,6 +4,8 @@ const server = express();
 
 server.use(express.json());
 
+let requests = 0;
+
 const projects = [];
 
 function checkProjectExists(req, res, next) {
@@ -17,6 +19,16 @@ function checkProjectExists(req, res, next) {
 
   return next();
 }
+
+function quantityRequests(req, res, next) {
+  requests += 1;
+
+  console.log(requests);
+
+  return next();
+}
+
+server.use(quantityRequests);
 
 server.get("/projects", (req, res) => {
   return res.json(projects);
