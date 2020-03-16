@@ -20,7 +20,7 @@ function checkProjectExists(req, res, next) {
   return next();
 }
 
-function quantityRequests(req, res, next) {
+function numberRequests(req, res, next) {
   requests += 1;
 
   console.log(requests);
